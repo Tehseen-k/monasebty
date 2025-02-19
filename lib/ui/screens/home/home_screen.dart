@@ -24,7 +24,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-   final _authService = GetIt.instance<AuthServices>();
+  final _authService = GetIt.instance<AuthServices>();
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -62,31 +62,43 @@ class _HomeScreenState extends State<HomeScreen> {
                   /// Special offers
                   ///
                   _specialOffer(),
-                  SizedBox(
-                    height: 280.h,
-                    child: ListView.builder(
-                      itemCount: model.specialOfferVenues.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (BuildContext context, int index) {
-                        return GestureDetector(
-                          onTap: () {
-                            // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM4ODQzMTA5LCJpYXQiOjE3Mzg4NDI4MDksImp0aSI6ImQ3YTRiODc4N2IyYzQxMzk5MDMwM2M5OGE0ZTY3MzNkIiwidXNlcl9pZCI6M30.FbrB53ClIxaYRKMY_R3IE7_zx1dlaZ0juHSA7MstylA
-                            // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM4ODQzMTA5LCJpYXQiOjE3Mzg4NDI4MDksImp0aSI6ImQ3YTRiODc4N2IyYzQxMzk5MDMwM2M5OGE0ZTY3MzNkIiwidXNlcl9pZCI6M30.FbrB53ClIxaYRKMY_R3IE7_zx1dlaZ0juHSA7MstylA
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        SpecialOfferDetailScreen(
-                                          specialOfferVenues:
-                                              model.specialOfferVenues,
-                                        )));
-                          },
-                          child: CustomSpecialOffer(
-                              specialOffer: model.specialOfferVenues[index]),
-                        );
-                      },
-                    ),
-                  ),
+
+                  model.specialOfferVenues.isNotEmpty
+                      ? SizedBox(
+                          height: 280.h,
+                          child: ListView.builder(
+                            itemCount: model.specialOfferVenues.length,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (BuildContext context, int index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM4ODQzMTA5LCJpYXQiOjE3Mzg4NDI4MDksImp0aSI6ImQ3YTRiODc4N2IyYzQxMzk5MDMwM2M5OGE0ZTY3MzNkIiwidXNlcl9pZCI6M30.FbrB53ClIxaYRKMY_R3IE7_zx1dlaZ0juHSA7MstylA
+                                  // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM4ODQzMTA5LCJpYXQiOjE3Mzg4NDI4MDksImp0aSI6ImQ3YTRiODc4N2IyYzQxMzk5MDMwM2M5OGE0ZTY3MzNkIiwidXNlcl9pZCI6M30.FbrB53ClIxaYRKMY_R3IE7_zx1dlaZ0juHSA7MstylA
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              SpecialOfferDetailScreen(
+                                                specialOfferVenues:
+                                                    model.specialOfferVenues,
+                                              )));
+                                },
+                                child: CustomSpecialOffer(
+                                    specialOffer:
+                                        model.specialOfferVenues[index]),
+                              );
+                            },
+                          ),
+                        )
+                      : Padding(
+                          padding: const EdgeInsets.only(top: 40.0, bottom: 40),
+                          child: Center(
+                            child: Text(
+                              "لا يوجد عرض الأماكن",
+                              style: style16.copyWith(color: primaryColor),
+                            ),
+                          ),
+                        ),
                   30.verticalSpace,
 
                   ///
@@ -94,26 +106,37 @@ class _HomeScreenState extends State<HomeScreen> {
                   ///
 
                   _soonestAppointments(),
-                  SizedBox(
-                    height: 300.h,
-                    child: ListView.builder(
-                      itemCount: model.venues.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (BuildContext context, int index) {
-                        return GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => VenueDetailsScreen(
-                                            venue: model.venues[index],
-                                          )));
+                  model.venues.isNotEmpty
+                      ? SizedBox(
+                          height: 300.h,
+                          child: ListView.builder(
+                            itemCount: model.venues.length,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (BuildContext context, int index) {
+                              return GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                VenueDetailsScreen(
+                                                  venue: model.venues[index],
+                                                )));
+                                  },
+                                  child: CustomSoonestAppointments(
+                                      soonestAppointment: model.venues[index]));
                             },
-                            child: CustomSoonestAppointments(
-                                soonestAppointment: model.venues[index]));
-                      },
-                    ),
-                  ),
+                          ),
+                        )
+                      : Padding(
+                          padding: const EdgeInsets.only(top: 80.0),
+                          child: Center(
+                            child: Text(
+                              "لا يوجد عرض الأماكن",
+                              style: style16.copyWith(color: primaryColor),
+                            ),
+                          ),
+                        ),
                   30.verticalSpace
                 ],
               ),
@@ -196,7 +219,7 @@ AppBar _appBar(name) {
                   style: style16.copyWith(color: greyColor),
                 ),
                 Text(
-                  "${name??'...'}",
+                  "${name ?? '...'}",
                   style: style16,
                 ),
               ],

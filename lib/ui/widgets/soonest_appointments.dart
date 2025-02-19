@@ -79,31 +79,30 @@ class CustomSoonestAppointments extends StatelessWidget {
                   ///
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
-                        height: 30.h,
-                        width: 95.h,
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 1),
                         decoration: BoxDecoration(
                             color: Color(0xfffFBBC05),
-                            borderRadius: BorderRadius.circular(10)),
+                            borderRadius: BorderRadius.circular(16.r)),
                         child: Center(
                           child: Text(
-                            "${soonestAppointment.price}",
+                            "دينار  ${soonestAppointment.price}",
                             style: style16.copyWith(
                                 color: blackColor, fontWeight: FontWeight.w400),
                           ),
                         ),
                       ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.3,
-                        child: Text(
-                          "${soonestAppointment.name}",
-                          overflow: TextOverflow.ellipsis,
-                          style: style16.copyWith(
-                            color: blackColor,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16,
-                          ),
+                      10.horizontalSpace,
+                      Text(
+                        "${soonestAppointment.name}",
+                        overflow: TextOverflow.ellipsis,
+                        style: style16.copyWith(
+                          color: blackColor,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
                         ),
                       )
                     ],
@@ -127,12 +126,12 @@ class CustomSoonestAppointments extends StatelessWidget {
                   Row(
                     children: [
                       CustomSoonestAppointmentsSubCategory(
-                        imgUrl: AppAssets.star,
-                        text: "توجد شاشة عرض",
+                        imgUrl: AppAssets.guest,
+                        text: "${soonestAppointment.capacity}",
                       ),
                       10.horizontalSpace,
                       CustomSoonestAppointmentsSubCategory(
-                        imgUrl: AppAssets.star,
+                        imgUrl: AppAssets.projector,
                         text: "توجد شاشة عرض",
                       ),
                     ],
@@ -172,15 +171,15 @@ class CustomSoonestAppointmentsSubCategory extends StatelessWidget {
         children: [
           Text(
             text,
-            style: style10,
+            style: style10.copyWith(color: primaryColor),
           ),
+          10.horizontalSpace,
           Container(
               height: 16,
               width: 20,
               child: Image.asset(
-                imgUrl, scale: 1,
-                //  "${object_HomeScreenListModel.imgUrl}",
-                //   AppAssets.star,
+                imgUrl,
+                scale: 1,
               ))
         ],
       ),

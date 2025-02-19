@@ -1,0 +1,2 @@
+/Users/eapple/monasebty/android/app/.cxx/Debug/3l5r5o4l/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/eapple/monasebty/android/app/.cxx/Debug/3l5r5o4l/armeabi-v7a/CMakeFiles/rebuild_cache.dir

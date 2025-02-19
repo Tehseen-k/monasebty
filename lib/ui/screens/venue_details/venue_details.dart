@@ -78,17 +78,21 @@ class VenueDetailsScreen extends StatelessWidget {
                                       fontSize: 13.0.sp),
                                 ),
                                 SizedBox(height: 20.h),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    CustomSoonestAppointmentsSubCategory(
-                                        imgUrl: AppAssets.location,
-                                        text: "${venue.address}"),
-                                    SizedBox(width: 20.w),
-                                    CustomSoonestAppointmentsSubCategory(
-                                        imgUrl: AppAssets.phone,
-                                        text: "${venue.location}"),
-                                  ],
+                                SizedBox(
+                                  height: 30.h,
+                                  child: ListView(
+                                    scrollDirection: Axis.horizontal,
+                                    shrinkWrap: true,
+                                    children: [
+                                      CustomSoonestAppointmentsSubCategory(
+                                          imgUrl: AppAssets.location,
+                                          text: "${venue.address}"),
+                                      SizedBox(width: 20.w),
+                                      CustomSoonestAppointmentsSubCategory(
+                                          imgUrl: AppAssets.phone,
+                                          text: "${venue.location}"),
+                                    ],
+                                  ),
                                 ),
                                 SizedBox(height: 10.h),
                                 Container(

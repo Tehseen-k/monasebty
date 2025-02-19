@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
@@ -8,7 +10,6 @@ import 'package:monasebty/ui/screens/booking/book_confirm_screen.dart';
 import 'package:monasebty/ui/screens/booking/booking_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:intl/intl.dart';
 
 class BookingScreen extends StatefulWidget {
   Venue venue;
@@ -192,12 +193,20 @@ class _BookingScreenState extends State<BookingScreen> {
                                       startDateAndTime,
                                       endDateAndTime,
                                       context);
+                                  // Get.to(BookingConfirmationScreen(
+                                  //     selectedDay: _selectedDay!,
+                                  //     selectedTimeSlot: _selectedTimeSlot,
+                                  //     venue: widget.venue,
+                                  //     startDateAndTime: startDateAndTime,
+                                  //     endDateAndTime: endDateAndTime));
                                   Get.to(BookingConfirmationScreen(
-                                      selectedDay: _selectedDay!,
-                                      selectedTimeSlot: _selectedTimeSlot,
-                                      venue: widget.venue,
-                                      startDateAndTime: startDateAndTime,
-                                      endDateAndTime: endDateAndTime));
+                                    selectedDay: _selectedDay!,
+                                    selectedTimeSlot:
+                                        timeSlots[_selectedTimeSlot! - 1],
+                                    venue: widget.venue,
+                                    startDateAndTime: startDateAndTime,
+                                    endDateAndTime: endDateAndTime,
+                                  ));
                                 }
                               },
                               child: const Text("احجز الآن"),

@@ -1,15 +1,12 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:monasebty/core/constants/app_assets.dart';
 import 'package:monasebty/core/constants/auth_field_decoration.dart';
 import 'package:monasebty/core/constants/colors.dart';
-import 'package:monasebty/ui/screens/auth/login/login_provider.dart';
 import 'package:monasebty/ui/screens/auth/update_password/update_password_provider.dart';
-import 'package:monasebty/ui/screens/home/home_screen.dart';
 import 'package:monasebty/ui/widgets/buttons/custom_button.dart';
 import 'package:provider/provider.dart';
 

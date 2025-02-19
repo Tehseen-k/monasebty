@@ -56,23 +56,24 @@ class SignUpViewModel extends BaseViewModel {
       email: emailController.text,
       confirm_password: confirmPasswordController.text,
       password: passwordController.text,
+      role: "customer",
     );
-Map<bool, String>? response;
+    Map<bool, String>? response;
     try {
       setState(ViewState.busy);
-       response = await _authServices.signUpUser(signUpBody);
+      response = await _authServices.signUpUser(signUpBody);
 
       print("SignUpViewModel=> $response");
       if (response.keys.first == true) {
         Get.offAll(LoginScreen());
-        Get.snackbar("Sucess", "Sucessfully Registered",
+        Get.snackbar("النجاح", "تم التسجيل بنجاح",
             backgroundColor: primaryColor, colorText: Colors.white);
       } else {
-        Get.snackbar("خطأ", "حدث خطأ أثناء التسجيل",
+        Get.snackbar("خطأ", "بالفعل تسجيل المستخدم",
             backgroundColor: primaryColor, colorText: Colors.white);
       }
     } catch (e) {
-      Get.snackbar("Error", "${response?.keys.first}\ntry again",
+      Get.snackbar("خطأ", "بالفعل تسجيل المستخدم",
           backgroundColor: primaryColor, colorText: Colors.white);
     }
     setState(ViewState.idle);

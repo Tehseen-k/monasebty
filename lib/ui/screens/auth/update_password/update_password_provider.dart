@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:monasebty/core/constants/colors.dart';
 import 'package:monasebty/core/services/database_services.dart';
 import 'package:monasebty/ui/screens/auth/login/login_screen.dart';
 
 class UpdatePasswordProvider extends ChangeNotifier {
   bool isLoading = false;
   final _dbService = DatabaseService();
-    bool isvisible = true;
+  bool isvisible = true;
   bool isvisibleConfirm = true;
   TextEditingController newPassword = TextEditingController();
   TextEditingController confirmPassword = TextEditingController();
@@ -23,24 +23,23 @@ class UpdatePasswordProvider extends ChangeNotifier {
       };
       final isReset = await _dbService.resetPassword(data);
       if (isReset) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text("Password updated")));
+        Get.snackbar("النجاح", "تم تحديث كلمة المرور",
+            backgroundColor: primaryColor, colorText: Colors.white);
         Get.offAll(LoginScreen());
       } else {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text("Error Occured, try again")));
+        Get.snackbar("خطأ", "حاول ثانية",
+            backgroundColor: primaryColor, colorText: Colors.white);
       }
     } catch (e) {
-    
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Error Occured, $e")));
+      Get.snackbar("خطأ", "$e",
+          backgroundColor: primaryColor, colorText: Colors.white);
       print("error occured : $e");
     }
     isLoading = false;
     notifyListeners();
   }
 
-    void togglePasswordVisibility() {
+  void togglePasswordVisibility() {
     isvisible = !isvisible;
     notifyListeners();
   }

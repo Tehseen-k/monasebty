@@ -80,7 +80,7 @@ class CustomSpecialOffer extends StatelessWidget {
                     ///
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           padding:
@@ -88,11 +88,11 @@ class CustomSpecialOffer extends StatelessWidget {
                           alignment: Alignment.center,
                           // height: 20.h,
                           decoration: BoxDecoration(
-                              color: Color(0xffF8E0BA).withOpacity(0.75),
-                              borderRadius: BorderRadius.circular(20)),
+                              color: Color(0xffFBBC05),
+                              borderRadius: BorderRadius.circular(16.r)),
                           child: Center(
                             child: Text(
-                              "${specialOffer.price}",
+                              "دينار   ${specialOffer.price}",
                               style: style14.copyWith(
                                   fontSize: 11.sp,
                                   color: blackColor,
@@ -100,25 +100,21 @@ class CustomSpecialOffer extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.3,
-                          child: Text(
-                            "${specialOffer.name}",
-                            overflow: TextOverflow.ellipsis,
-                            style: style16.copyWith(
-                              color: blackColor,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 16,
-                            ),
+                        Text(
+                          "${specialOffer.name}",
+                          overflow: TextOverflow.ellipsis,
+                          style: style16.copyWith(
+                            color: blackColor,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16,
                           ),
                         )
                       ],
-
-                      ///
-                      ///        description of image
-                      ///
                     ),
 
+                    ///
+                    ///        description of image
+                    ///
                     Align(
                         alignment: Alignment.topRight,
                         child: Text(
@@ -135,13 +131,13 @@ class CustomSpecialOffer extends StatelessWidget {
                     Row(
                       children: [
                         CustomHomeSpecialOfferlist(
-                          imgUrl: AppAssets.star,
+                          imgUrl: AppAssets.guest,
                           text: "${specialOffer.capacity}",
                           width: 140,
                         ),
                         10.horizontalSpace,
                         CustomHomeSpecialOfferlist(
-                          imgUrl: AppAssets.star,
+                          imgUrl: AppAssets.projector,
                           text: "توجد شاشة عرض",
                           width: 140,
                         ),
@@ -211,17 +207,19 @@ class CustomHomeSpecialOfferlist extends StatelessWidget {
       decoration: BoxDecoration(
           color: Color(0xffF8E0BA), borderRadius: BorderRadius.circular(20)),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           // Text("${object_HomeScreenListModel.text}"),
-          Text(text),
-          Container(
-              height: 10,
-              width: 20,
-              child: Image.asset(
-                imgUrl, scale: 5,
-                //  "${object_HomeScreenListModel.imgUrl}",
-                //   AppAssets.star,
-              ))
+          Text(
+            text,
+            style: style14.copyWith(color: primaryColor),
+          ),
+          10.horizontalSpace,
+          Image.asset(
+            imgUrl, scale: 3,
+            //  "${object_HomeScreenListModel.imgUrl}",
+            //   AppAssets.star,
+          )
         ],
       ),
     );

@@ -16,4 +16,6 @@ class AppAssets {
   static const String location = "assets/icons/location_icon.png";
   static const String phone = "assets/icons/call_icon.png";
   static const String star2 = "assets/icons/star2.png";
+  static const String guest = "assets/icons/guest.png";
+  static const String projector = "assets/icons/projector-board.png";
 }

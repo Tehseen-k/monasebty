@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:monasebty/core/constants/colors.dart';
 import 'package:monasebty/core/model/body/login_body.dart';
 import 'package:monasebty/core/other/view_state.dart';
@@ -45,14 +44,15 @@ class LoginProvider extends BaseViewModel {
       print("SignUpViewModel=> $response");
       if (response == true) {
         Get.offAll(HomeScreen());
-        Get.snackbar("Sucess", "Sucessfully Login",
+        Get.snackbar("النجاح", "تسجيل الدخول بنجاح",
             backgroundColor: primaryColor, colorText: Colors.white);
       } else {
-        Get.snackbar("Error", "Wrong Email and password check again please",
+        Get.snackbar("خطأ",
+            "البريد الإلكتروني وكلمة المرور خاطئان، يرجى التحقق مرة أخرى",
             backgroundColor: primaryColor, colorText: Colors.white);
       }
     } catch (e) {
-      Get.snackbar("Error", "${e.toString()}",
+      Get.snackbar("خطأ", "${e.toString()}",
           backgroundColor: primaryColor, colorText: Colors.white);
     }
     setState(ViewState.idle);

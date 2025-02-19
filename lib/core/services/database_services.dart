@@ -11,14 +11,19 @@ class DatabaseService {
   final _localStorageService = LocalStorageService();
 
   /// Sign Up
-  Future<Map<bool,String>> createAccount(SignUpBody signUpBody) async {
+  Future<Map<bool, String>> createAccount(SignUpBody signUpBody) async {
     final response = await _apiServices.post(
       url: '${EndPoints.baseUrl + EndPoints.signup}',
       isRegister: true,
       data: signUpBody.toJson(),
     );
 
-    return {response.data["message"] == "register successfully":response.data["message"]};
+    return {
+      response.data["message"] == "register successfully":
+          response.data["message"] == "register successfully"
+              ? response.data["message"]
+              : "User Already Registered"
+    };
   }
 
   /// Login
@@ -114,7 +119,8 @@ class DatabaseService {
       return false;
     }
   }
-   Future<bool> verifyOtp(data) async {
+
+  Future<bool> verifyOtp(data) async {
     final response = await _apiServices.post(
         url: '${EndPoints.baseUrl}${EndPoints.verifyOtp}',
         isRegister: true,
@@ -134,7 +140,9 @@ class DatabaseService {
 
   Future<bool> resetPassword(data) async {
     final response = await _apiServices.post(
-        url: '${EndPoints.baseUrl}${EndPoints.resetPassword}', data: data,isRegister: true);
+        url: '${EndPoints.baseUrl}${EndPoints.resetPassword}',
+        data: data,
+        isRegister: true);
 
     if (response.success) {
       print("✅ reset password: ${response.data}");

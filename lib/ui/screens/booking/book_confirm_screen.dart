@@ -1,40 +1,40 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:monasebty/core/constants/app_assets.dart';
 import 'package:monasebty/core/constants/colors.dart';
 import 'package:monasebty/core/model/venue.dart';
+import 'package:monasebty/ui/screens/booking/booking_screen.dart';
 
 class BookingConfirmationScreen extends StatelessWidget {
+  final DateTime selectedDay;
+  final TimeSlot? selectedTimeSlot;
   final Venue venue;
-  DateTime? selectedDay;
-  int? selectedTimeSlot;
-  String startDateAndTime;
-  String endDateAndTime;
+  final String startDateAndTime;
+  final String endDateAndTime;
 
-  BookingConfirmationScreen(
-      {required this.venue,
-      required this.selectedDay,
-      required this.selectedTimeSlot,
-      required this.endDateAndTime,
-      required this.startDateAndTime});
+  BookingConfirmationScreen({
+    required this.selectedDay,
+    required this.selectedTimeSlot,
+    required this.venue,
+    required this.startDateAndTime,
+    required this.endDateAndTime,
+  });
 
   String formatDateTime() {
-    // Parse the ISO string to DateTime
-    DateTime endTime = DateTime.parse(endDateAndTime);
-    
-    // Format the end time to 12-hour format
-    String formattedTime = DateFormat('h:mma').format(endTime).toLowerCase();
-    
-    // Format the date with day name and date
-    String formattedDate = DateFormat('EEEE d').format(selectedDay!);
-    
-    // Combine them
-    return "$formattedDate, $formattedTime";
+    DateTime startTime = DateTime.parse(startDateAndTime);
+
+    String formattedTime = DateFormat('h:mma').format(startTime).toLowerCase();
+    String formattedDate = DateFormat('EEEE d').format(selectedDay);
+
+    return "$formattedDate, ${selectedTimeSlot?.startTime}";
   }
 
   @override
   Widget build(BuildContext context) {
+    print("Selected Time Slot: ${selectedTimeSlot}");
     return Scaffold(
       body: Container(
         height: double.infinity,
